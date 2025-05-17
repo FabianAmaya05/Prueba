@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="Description" content="Formulario para Crear Proyecto" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	<title>Crear Proyecto</title>
+
+	<style>
+		:root {
+			--primary-color: #1a73e8;
+			--secondary-color: #2c3e50;
+			--accent-color: #34c759;
+			--background-color: #f4f7fc;
+			--card-bg: #ffffff;
+			--text-color: #333;
+			--muted-text: #6c757d;
+			--danger-color: #dc3545;
+			--warning-color: #ffc107;
+		}
+
+		body {
+			background: var(--background-color);
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			color: var(--text-color);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			padding-top: 0;
+		}
+
+		header {
+			background: linear-gradient(135deg, var(--secondary-color), #34495e);
+			color: white;
+			text-align: center;
+			padding: 2rem 0;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+			width: 100%;
+		}
+
+		header h1 {
+			font-size: 2rem;
+			font-weight: 700;
+			margin: 0;
+		}
+
+		header p {
+			font-size: 1.1rem;
+			opacity: 0.9;
+			margin: 0.5rem 0 0;
+		}
+
+		.navbar {
+			background: #fff;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			padding: 0.75rem 0;
+		}
+
+		.navbar-brand {
+			font-weight: 600;
+			color: var(--primary-color) !important;
+			display: flex;
+			align-items: center;
+		}
+
+		.navbar-brand img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			margin-right: 0.5rem;
+			border: 2px solid var(--primary-color);
+		}
+
+		.nav-link {
+			color: var(--secondary-color) !important;
+			font-weight: 500;
+			padding: 0.5rem 1rem;
+			transition: color 0.3s ease;
+		}
+
+		.nav-link:hover, .nav-link.active {
+			color: var(--primary-color) !important;
+		}
+
+		.form-container {
+			flex: 1;
+			padding: 3rem 1rem;
+		}
+
+		.form-card {
+			background: var(--card-bg);
+			border: none;
+			border-radius: 16px;
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+			padding: 2rem;
+			max-width: 800px;
+			width: 100%;
+			margin: 0 auto;
+			position: relative;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			opacity: 0;
+			animation: fadeIn 1s forwards;
+		}
+
+		.form-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+		}
+
+		.form-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: var(--primary-color);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.form-card:hover::before {
+			opacity: 1;
+		}
+
+		.form-card h1 {
+			font-size: 1.75rem;
+			font-weight: 600;
+			color: var(--secondary-color);
+			text-align: center;
+			margin-bottom: 1.5rem;
+		}
+
+		.form-group {
+			margin-bottom: 1.5rem;
+		}
+
+		.form-control {
+			border-radius: 8px;
+			border: 1px solid #ced4da;
+			padding: 0.75rem;
+			transition: box-shadow 0.3s ease, border-color 0.3s ease;
+		}
+
+		.form-control:focus {
+			border-color: var(--primary-color);
+			box-shadow: 0 0 8px rgba(26, 115, 232, 0.5);
+			outline: none;
+		}
+
+		.form-control::placeholder {
+			color: var(--muted-text);
+			opacity: 0.7;
+		}
+
+		.form-select {
+			border-radius: 8px;
+			padding: 0.75rem;
+			transition: box-shadow 0.3s ease, border-color 0.3s ease;
+		}
+
+		.form-select:focus {
+			border-color: var(--primary-color);
+			box-shadow: 0 0 8px rgba(26, 115, 232, 0.5);
+			outline: none;
+		}
+
+		.btn-primary {
+			background: var(--primary-color);
+			border: none;
+			border-radius: 8px;
+			padding: 0.75rem 1.5rem;
+			font-weight: 500;
+			transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			background: #1557b0;
+			transform: scale(1.05);
+			box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.3);
+		}
+
+		.btn-primary:active {
+			background: #0d47a1;
+			transform: scale(0.98);
+		}
+
+		.btn-secondary {
+			background: var(--muted-text);
+			border: none;
+			border-radius: 8px;
+			padding: 0.75rem 1.5rem;
+			font-weight: 500;
+			transition: background 0.3s ease, transform 0.2s ease;
+		}
+
+		.btn-secondary:hover {
+			background: #5a6268;
+			transform: translateY(-2px);
+		}
+
+		.alert {
+			border-radius: 8px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+			margin-bottom: 1.5rem;
+		}
+
+		.alert .btn-close {
+			padding: 0.75rem;
+		}
+
+		footer {
+			background: var(--secondary-color);
+			color: white;
+			padding: 1.5rem 0;
+			font-size: 0.9rem;
+			text-align: center;
+			width: 100%;
+			margin-top: auto;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@media (max-width: 768px) {
+			header {
+				padding: 1.5rem 0;
+			}
+
+			header h1 {
+				font-size: 1.5rem;
+			}
+
+			header p {
+				font-size: 1rem;
+			}
+
+			.form-card {
+				padding: 1.5rem;
+			}
+
+			.form-card h1 {
+				font-size: 1.5rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>Crear Proyecto</h1>
+		<p>Universidad del Conocimiento</p>
+	</header>
+
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/coordinador/panelCoordinador}">
+				<img th:src="@{/images/buho.jpg}" alt="Logo">
+				<span>Panel Coordinador</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+				<ul class="navbar-nav mb-2 mb-lg-0">
+					<li class="nav-item mx-3">
+						<a class="nav-link" th:href="@{/coordinador/panelCoordinador}">Inicio</a>
+					</li>
+					<li class="nav-item mx-3">
+						<a class="nav-link active" th:href="@{/proyectos/coordinador/creados}">Crear Anteproyecto</a>
+					</li>
+					<li class="nav-item mx-3">
+						<a class="nav-link" th:href="@{/informe-proyecto}">Informe del Proyecto</a>
+					</li>
+					<li class="nav-item mx-3">
+						<a class="nav-link" href="https://www.uts.edu.co/sitio/wp-content/uploads/normatividad/acuerdos/acu-129.pdf?_t=1706217540" target="_blank">Calendario Académico</a>
+					</li>
+					<li class="nav-item mx-3">
+						<a class="nav-link" href="https://www.dropbox.com/sh/2937zx708zgncsw/AAA0pUsWY74w6GHJ4DksaTa1a/DOCUMENTOS%20DE%20GRADO?dl=0&preview=F-DC-124+Propuesta+trabajo+grado++Investigación%2C+Desarrollo+Tecnológico%2C+Monografía+y+Emprendimiento+V2.doc&subfolder_nav_tracking=1" target="_blank">Formatos de Grado</a>
+					</li>
+				</ul>
+				<form class="d-flex ms-auto">
+					<button class="btn btn-outline-primary" type="button" onclick="window.location.href='/login'">Cerrar sesión</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="form-container">
+		<div class="form-card">
+			<h1>Formulario para Crear Proyecto</h1>
+
+			<!-- Alert -->
+			<div th:if="${exito}" class="alert alert-success alert-dismissible fade show" role="alert">
+				<span th:text="${exito}"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+
+			<!-- Form -->
+			<form th:action="@{/proyectos/coordinador/guardar}" method="post">
+				<div class="form-group">
+					<label for="titulo">Título del Proyecto:</label>
+					<input type="text" id="titulo" name="titulo" class="form-control" required placeholder="Ingresa el título del proyecto">
+				</div>
+
+				<div class="form-group">
+					<label for="descripcion">Descripción:</label>
+					<textarea id="descripcion" name="descripcion" class="form-control" required placeholder="Ingresa la descripción del proyecto"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="fechaCreacion">Fecha de Creación:</label>
+					<input type="date" id="fechaCreacion" name="fechaCreacion" th:value="${#dates.format(proyecto.fechaCreacion, 'yyyy-MM-dd')}" class="form-control" required>
+				</div>
+
+				<div class="form-group">
+					<label for="fechaLimite">Fecha Límite:</label>
+					<input type="date" id="fechaLimite" name="fechaLimite" th:value="${#dates.format(proyecto.fechaLimite, 'yyyy-MM-dd')}" class="form-control" required>
+				</div>
+
+				<div class="form-group">
+					<label for="estado">Estado:</label>
+					<select id="estado" name="estado" class="form-select" required>
+						<option value="activo">Activo</option>
+						<option value="inactivo">Inactivo</option>
+						<option value="completado">Completado</option>
+					</select>
+				</div>
+
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-primary">Guardar Proyecto</button>
+				</div>
+			</form>
+
+			<a th:href="@{/proyectos/coordinador/creados}" class="btn btn-secondary mt-4 d-block mx-auto">Volver a la lista de proyectos</a>
+		</div>
+	</div>
+
+	<footer>
+		<p>© 2025 Universidad del Conocimiento. Todos los derechos reservados.</p>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

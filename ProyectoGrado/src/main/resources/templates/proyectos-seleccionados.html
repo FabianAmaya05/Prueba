@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos Seleccionados por Estudiantes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            margin: 1rem;
+            position: sticky;
+            top: 1rem;
+            z-index: 1000;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+        }
+
+        .nav-link {
+            color: #1f2937 !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6 !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-success {
+            border-color: #10b981;
+            color: #10b981;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #10b981;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-top: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #1f2937;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        hr {
+            border-top: 3px solid #3b82f6;
+            width: 100px;
+            margin: 1.5rem auto;
+        }
+
+        .table {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 1.5rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border: none;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #1f2937;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .btn-secondary {
+            background-color: #6b7280;
+            color: #fff;
+            padding: 0.5rem 1.25rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+            transform: scale(1.05);
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .table {
+                font-size: 0.9rem;
+            }
+            th, td {
+                padding: 0.75rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light p-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" th:href="@{/proyectos/coordinador}">
+                <img src="https://via.placeholder.com/40" alt="Logo">
+                <span class="ml-2 font-weight-bold text-gray-800">Panel del Coordinador</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" th:href="@{/proyectos/coordinador}"><i class="fas fa-home mr-1"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link active" th:href="@{/proyectos/seleccionados}"><i class="fas fa-folder-open mr-1"></i>Proyectos Seleccionados</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex ms-auto" th:action="@{/logout}" method="post">
+                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1>Proyectos Seleccionados por Estudiantes</h1>
+        <hr>
+
+        <!-- Mostrar mensaje de error si existe -->
+        <div th:if="${errorMessage}" class="error-message">
+            <span th:text="${errorMessage}"></span>
+        </div>
+
+        <!-- Tabla de proyectos -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre del Proyecto</th>
+                    <th>Estudiante</th>
+                    <th>Director</th>
+                    <th>Evaluador</th>
+                    <th>Calificación Director</th>
+                    <th>Evaluación Director</th>
+                    <th>Calificación Evaluador</th>
+                    <th>Evaluación Evaluador</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="proyecto : ${proyectos}">
+                    <td th:text="${proyecto.titulo} ?: 'Sin título'"></td>
+                    <td th:text="${proyecto.estudiante != null ? proyecto.estudiante.nombre : 'Sin asignar'}"></td>
+                    <td th:text="${proyecto.director != null ? proyecto.director.nombre : 'Sin asignar'}"></td>
+                    <td th:text="${proyecto.evaluador != null ? proyecto.evaluador.nombre : 'Sin asignar'}"></td>
+                    <td th:text="${proyecto.calificadirector != null ? proyecto.calificadirector : 'Sin calificar'}"></td>
+                    <td th:text="${proyecto.evaluacionDirector != null ? proyecto.evaluacionDirector : 'Sin evaluación'}"></td>
+                    <td th:text="${proyecto.calificaevaluador != null ? proyecto.calificaevaluador : 'Sin calificar'}"></td>
+                    <td th:text="${proyecto.evaluacionEvaluador != null ? proyecto.evaluacionEvaluador : 'Sin evaluación'}"></td>
+                    <td>
+                        <!-- Comentado para inhabilitar la acción de asignar director/evaluador -->
+                        <!--
+                        <a th:href="@{'/proyectos/asignar/' + ${proyecto.id}}">Asignar Director/Evaluador</a>
+                        -->
+                        <span class="text-muted">Acción deshabilitada</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Enlace para volver al panel del coordinador -->
+        <a th:href="@{/proyectos/coordinador}" class="btn btn-secondary mt-4 d-block mx-auto">
+            <i class="fas fa-arrow-left mr-2"></i>Volver al panel del coordinador
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

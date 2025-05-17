@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar Director y Evaluador</title>
+</head>
+<body>
+    <h1>Asignar Director y Evaluador</h1>
+    <form th:action="@{'/proyectos/asignar/' + ${proyecto.id}}" method="post">
+        <p><strong>Proyecto:</strong> <span th:text="${proyecto.titulo}"></span></p>
+        <p><strong>Estudiante:</strong> <span th:text="${proyecto.estudiante.nombre}"></span></p>
+
+        <!-- Selección de Director -->
+        <label for="directorId">Director:</label>
+        <select name="directorId" id="directorId" required>
+            <option value="" disabled selected>Seleccione un Director</option>
+            <option th:each="director : ${profesores}" 
+                    th:value="${director.id}" 
+                    th:text="${director.nombre}"></option>
+        </select><br><br>
+
+        <!-- Selección de Evaluador -->
+        <label for="evaluadorId">Evaluador:</label>
+        <select name="evaluadorId" id="evaluadorId" required>
+            <option value="" disabled selected>Seleccione un Evaluador</option>
+            <option th:each="evaluador : ${profesores}" 
+                    th:value="${evaluador.id}" 
+                    th:text="${evaluador.nombre}"></option>
+        </select><br><br>
+
+        <button type="submit">Asignar</button>
+    </form>
+
+    <a href="/proyectos/coordinador/seleccionados">Volver</a>
+</body>
+</html>

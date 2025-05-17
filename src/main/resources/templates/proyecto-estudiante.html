@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Proyectos</title>
+</head>
+<body>
+    <h1>Proyectos Seleccionados</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Proyecto</th>
+                <th>Descripción</th>
+                <th>Director</th>
+                <th>Evaluador</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="proyecto : ${proyectos}">
+                <td th:text="${proyecto.nombre}"></td>
+                <td th:text="${proyecto.descripcion}"></td>
+                <td th:text="${proyecto.director.nombre}"></td>
+                <td th:text="${proyecto.evaluador.nombre}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/proyectos/disponibles">Volver a ver proyectos disponibles</a>
+</body>
+</html>

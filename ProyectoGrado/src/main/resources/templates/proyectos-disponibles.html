@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos Disponibles</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #007bff !important;
+            text-decoration: underline;
+        }
+
+        .navbar-brand img {
+            border-radius: 50%;
+            border: 2px solid #007bff;
+        }
+
+        .btn-outline-success {
+            border-color: #28a745;
+            color: #28a745;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .nuevo-proyecto-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .nuevo-proyecto-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .nuevo-proyecto-btn:active {
+            background-color: #3e8e41;
+        }
+
+        .nuevo-proyecto-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(72, 179, 85, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn-escoger {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-escoger:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn-escoger:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(72, 179, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.5);
+        }
+
+        .container {
+            margin-top: 40px;
+            max-width: 1100px;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        hr {
+            border-top: 2px solid #007bff;
+            margin: 20px 0;
+        }
+
+        .table-warning {
+            background-color: #fff3cd;
+        }
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 shadow-sm mt-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" th:href="@{/estudiante/panelEstudiante}">
+                
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" th:href="@{/estudiante/panelEstudiante}">Inicio</a>
+                    </li>
+					<!---
+						
+						<li class="nav-item mx-3">
+						                        <a class="nav-link" th:href="@{/informe-proyecto}">Informe del Proyecto</a>
+						                    </li>
+					-->
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" th:href="@{/proyectos/disponibles}">Proyectos Disponibles</a>
+                    </li>
+                    
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="https://www.uts.edu.co/sitio/wp-content/uploads/normatividad/acuerdos/acu-129.pdf?_t=1706217540" target="_blank">Calendario Académico</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="https://www.dropbox.com/sh/2937zx708zgncsw/AAA0pUsWY74w6GHJ4DksaTa1a/DOCUMENTOS%20DE%20GRADO?dl=0&preview=F-DC-124+Propuesta+trabajo+grado++Investigación%2C+Desarrollo+Tecnológico%2C+Monografía+y+Emprendimiento+V2.doc&subfolder_nav_tracking=1" target="_blank">Formatos de Grado</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex ms-auto">
+                    <button class="btn btn-outline-success" type="button" th:onclick="'window.location.href=\'' + @{/login} + '\''">Cerrar sesión</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h3 class="text-center">Proyectos Disponibles</h3>
+        <hr>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre del Proyecto</th>
+                    <th>Descripción</th>
+                    <th>Estudiante</th>
+                    <th>Escoger</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="proyecto : ${proyectos}"
+                    th:classappend="${proyecto.estudiante != null} ? 'table-warning' : ''">
+                    <td th:text="${proyecto.titulo}"></td>
+                    <td th:text="${proyecto.descripcion}"></td>
+                    <td>
+                        <span th:text="${proyecto.estudiante != null ? proyecto.estudiante.nombres : 'Sin asignar'}"></span><br>
+                        <small th:text="${proyecto.estudiante != null ? proyecto.estudiante.cedula : 'Sin cédula'}"></small>
+                    </td>
+                    <td>
+                        <div th:if="${proyecto.estudiante == null}">
+                            <form th:action="@{/proyectos/escoger/{id}(id=${proyecto.id})}" method="post">
+                                <input type="hidden" name="estudianteId" th:value="${estudianteId}" />
+                                <button type="submit" class="btn-escoger">Escoger Proyecto</button>
+                            </form>
+                        </div>
+                        <div th:if="${proyecto.estudiante != null}">
+                            <button class="btn btn-secondary" disabled>Ya Asignado</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/proyectos/estudiante/{#httpServletRequest.remoteUser}" class="btn btn-secondary mt-4 d-block mx-auto">Ver Proyectos Seleccionados</a>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
