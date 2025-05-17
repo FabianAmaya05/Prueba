@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Concesionario - Tokyo Drift</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/css/style.css">
+
+
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <script src="/js/scrip.js"></script>
+
+        <header class="header">
+            <div class="menu container">
+                <a hreft='@{/}' class="logo">Tokyo Drift</a>
+
+                <input type="checkbox" id="menu" />
+                <label for="menu"><img src="img/skyline/menu.png" class="menu-icono" alt=""></label>
+                <nav class="navbar">
+                    <ul>
+                       <li><a href="#" th:onclick="|window.location.href='@{/}'|" style="cursor: pointer;"class="active">Inicio</a></li>
+                        <li><a href="#" th:onclick="|window.location.href='@{/perfil}'|" style="cursor: pointer;">Perfil</a></li>
+                       <li><a href="#" th:onclick="|window.location.href='@{/historia}'|" style="cursor: pointer;">Historia</a></li>
+                        <li><a href="#" th:onclick="|window.location.href='@{/galeria}'|" style="cursor: pointer;">Galeria</a></li>
+                        <li><a href="#" th:onclick="|window.location.href='@{/nosotros}'|" style="cursor: pointer;">Nosotros</a></li>
+						<li><a href="#" th:onclick="|window.location.href='@{/login}'|" style="cursor: pointer;">Login</a></li>
+
+						<form class="d-flex ms-auto">
+						    <button class="btn btn-outline-light" type="button"
+						        th:onclick="|window.location.href='@{/login}'|">LOGIN</button>
+						</form>
+                    </ul>
+
+
+                </nav>
+                <div>
+                    <ul>
+                        <li Class="submenu">
+                            <img src="img/skyline/car.svg" id="im-carrito" alt="">
+                            <div id="carrito">
+                                <table id="lista-carrito">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <a href="#" id="vaciar-carrito" class="btn-3">Vaciar</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <div class="heder-content container">
+
+                <div class="swiper mySwiper-1">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+
+                            <div class="header-info">
+                                <div class="header-txt">
+                                    <h1>Skyline Gt R34</h1>
+                                    <div class="prices">
+                                        <p class="price-1">300,000,000 </p>
+                                        <p class="price-2">250,000,000 </p>
+                                    </div>
+                                    <a href="historia.html" class="btn-1">información</a>
+                                </div>
+                                <div class="header-img">
+                                    <img src="img/skyline/R34.png" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="swiper-slide">
+
+                            <div class="header-info">
+                                <div class="header-txt">
+                                    <h1>Nissan Gt R34</h1>
+
+                                    <div class="prices">
+                                        <p class="price-1">300,000,000 </p>
+                                        <p class="price-2">250,000,000 </p>
+                                    </div>
+                                    <a href="#" class="btn-1">información</a>
+                                </div>
+                                <div class="header-img">
+                                    <img src="img/skyline/PS1.png" alt="">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="header-info">
+                                <div class="header-txt">
+                                    <h1>Nissan Gt R32</h1>
+
+                                    <div class="prices">
+                                        <p class="price-1">300,000,000 </p>
+                                        <p class="price-2">250,000,000 </p>
+                                    </div>
+                                    <a href="#" class="btn-1">información</a>
+                                </div>
+                                <div class="header-img">
+                                    <img src="img/skyline/PS3.png" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </header>
+
+        <hr>
+
+        
+
+        <hr>
+
+        <section class="diseños" id="lista-2">
+            <h2>Diseños</h2>
+
+            <div class="swiper mySwiper-2">
+
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="product">
+                            <img src="img/skyline/foto.7.jpg" alt="" width="500">
+                            <div class="product-text">
+                                <h3>Skyline "Hero car"</h3>
+                                <p>Mitico diseño de Paul Walker</p>
+                                <p class="precio">$800,000,000</p>
+                                <a href="#" class="agregar-carrito btn-3" date-id="9">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="product">
+                            <img src="img/skyline/diseño.2.jpg" alt="" width="500">
+                            <div class="product-text">
+                                <h3>Amatista Legendario</h3>
+                                <p>Nissan Gt R34 Purple</p>
+                                <p class="precio">$300,000,000</p>
+                                <a href="#" class="agregar-carrito btn-3" date-id="10">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="product">
+                            <img src="img/skyline/diseño.3.jpg" alt="" width="500">
+                            <div class="product-text">
+                                <h3>Aogin no Ryu "Dragón Azul"</h3>
+                                <p>Nissan Gt R34 Azul</p>
+                                <p class="precio">$500,000,000</p>
+                                <a href="#" class="agregar-carrito btn-3" date-id="11">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="product">
+                            <img src="img/skyline/diseño.4.jpg" alt="" width="500">
+                            <div class="product-text">
+                                <h3>Godzila</h3>
+                                <p>Nissan Gt R34 Azul</p>
+                                <p class="precio">$400,000,000</p>
+                                <a href="#" class="agregar-carrito btn-3" date-id="12">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+            </div>
+        </section>
+
+
+        <footer class="footer container">
+
+            <div class="link">
+                <h3>Nissan</h3>
+                <ul>
+                    <li><a href="https://youtu.be/j8d7fx6py1w">Gt R32</a></li>
+                    <li><a href="https://youtu.be/j8d7fx6py1w">Gt R32</a></li>
+
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>Skiline</h3>
+                <ul>
+                    <li><a href="#">@nissan-skyline-gtr34</a></li>
+                    <li><a href="https://youtu.be/Wkr2SxVU_dA">Gt R34</a></li>
+
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>Cultura Japones</h3>
+                <ul>
+                    <li><a href="https://jdm-expo.com/4-jdm-sports">@JDM-JAPAN</a></li>
+                    <li><a href="#">@TUNING</a></li>
+
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>Cine</h3>
+                <ul>
+                    <li><a href="https://www.netflix.com/co/">Fast and Furious</a></li>
+                    <li><a href="https://www.alohacriticon.com/cine/actores-y-directores/paul-walker/">@PaulWalker</a></li>
+
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>@BrayanAnaya</h3>
+                <p>
+                    Cada versión del Nissan GT-R ha dejado una marca indeleble en la industria automotriz y ha acumulado
+                    una base de fanáticos dedicada, gracias a su rendimiento excepcional y su legado en el mundo del
+                    automovilismo.
+                </p>
+            </div>
+
+        </footer>
+
+
+
+
+    </body>
+
+    </html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia del Nissan GT-R</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+ }
+
+ :root{
+    --bg-color: #000000;
+    --second-bg-color: #161616;
+    --text-color:#fff;
+    --main-color:#7b4bb7;
+ }
+
+ html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+ }
+
+ body{
+    background: var(--bg-color);
+    font-family: 'Poppins', sans-serif;
+ }
+
+ html::-webkit-scrollbar{
+    width: 0.8rem;
+ }
+
+ html::-webkit-scrollbar-track{
+    background: var(--bg-color);
+ }
+
+ html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+ }
+
+ .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem 9%;
+    background: rgba(0, 0, 0, 0.7);
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+ }
+
+ .logo{
+    font-size: 3rem;
+    color: var(--main-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+ }
+
+ .logo:hover{
+    transform: scale(1.1);
+ }
+
+ .navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border: 3px solid transparent;
+    cursor: pointer;
+    
+ }
+
+ .navbar a:hover {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+
+ }
+
+ 
+
+ #menu-icon{
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+ }
+
+ .navbar a:hover,
+ .navbar a.active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+
+ }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #242430;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #4B77CE;
+            text-transform: uppercase;
+            margin: 0;
+            margin-top: 80px; margin-bottom: 20px;
+        }
+
+        .contenido {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 50px;
+            font-size: 15px;
+        }
+
+        .versiones {
+            width: calc(100% - 20px);
+            margin-bottom: 40px;
+        }
+
+        .version {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #4B77CE;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 0px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .caracteristicas {
+            background-color: #191919;
+            padding: 20px;
+            border-radius: 10px;
+            width: calc(100% - 20px);
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .caracteristicas h3 {
+            font-size: 18px;
+            color: #4B77CE;
+            margin-bottom: 10px;
+        }
+
+        .caracteristicas ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .caracteristicas ul li {
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .versiones {
+                width: calc(50% - 20px);
+            }
+
+            .caracteristicas {
+                width: calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">BRAYAN</a>
+        <i class="fa-solid fa-bars" ></i>
+		<i class="menu-icon" ></i>
+		
+		
+        <nav class="navbar">
+           
+               <a href="index.html">Inicio</a>
+               <a href="perfil.html">Perfil</a>
+               <a href="historia.html" class="active">Historia</a>
+               <a href="galeria.html">Galeria</a>
+               <a href="nosotros.html" >Nosotros</a>
+               <a href="contacto.html">Contacto</a>
+           
+       </nav>
+    
+    
+    </header>
+    <header>
+        <h1>Historia del Nissan GT-R</h1>
+    </header>
+    <div class="contenido">
+        <div class="versiones">
+            <div class="version">
+                <h2>Nissan Gt R32 (1989-1994)</h2>
+                <p>El legendario Skyline GT-R R32 marcó el renacimiento del GT-R después de una pausa en su producción. Equipado con un motor RB26DETT de 2.6 litros y tracción en las cuatro ruedas, ganó el apodo de "Godzilla" por su dominio en las pistas y su rendimiento excepcional en carretera.</p>
+                <img src="img/skyline/CR32.jpg" alt="">
+                <div class="caracteristicas">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Motor: RB26DETT 2.6L twin-turbo inline-6</li>
+                        <li>Tracción: 4 ruedas</li>
+                        <li>Transmisión: Manual de 5 velocidades</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="versiones">
+            <div class="version">
+                <h2>Nissan Gt R33 (1995-1998)</h2>
+                <p>El Skyline GT-R R33 fue una evolución del R32, con mejoras en el chasis, la aerodinámica y la tecnología. Mantuvo el motor RB26DETT pero ofreció un diseño más refinado y aerodinámico, ganando popularidad entre los entusiastas del automovilismo.</p>
+                <img src="img/skyline/r33.jpg" alt="">
+                <div class="caracteristicas">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Motor: RB26DETT 2.6L twin-turbo inline-6</li>
+                        <li>Tracción: 4 ruedas</li>
+                        <li>Transmisión: Manual de 5 velocidades</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="versiones">
+            <div class="version">
+                <h2>Nissan Gt R34 (1999-2002)</h2>
+                <p>Considerado por muchos como el pináculo de la serie, el Skyline GT-R R34 introdujo mejoras significativas en rendimiento y tecnología. Equipado con un motor RB26DETT, destacó por su transmisión automática de doble embrague y se convirtió en un ícono en la cultura del automovilismo.</p>
+                <img src="img/skyline/PS3.png" alt="">
+                <div class="caracteristicas">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Motor: RB26DETT 2.6L twin-turbo inline-6</li>
+                        <li>Tracción: 4 ruedas</li>
+                        <li>Transmisión: Manual de 5 velocidades</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="versiones">
+            <div class="version">
+                <h2>Nissan Gt R35 (2007-presente)</h2>
+                <p>El GT-R R35 marcó un nuevo capítulo para la línea GT-R al convertirse en un modelo independiente dentro de la marca Nissan. Equipado con un motor VR38DETT V6 twin-turbo de 3.8 litros y tracción en las cuatro ruedas, ha experimentado varias actualizaciones a lo largo de los años para seguir siendo uno de los automóviles deportivos más impresionantes del mercado.</p>
+                <img src="img/skyline/foto.1.jpg" alt="">
+                <div class="caracteristicas">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Motor: VR38DETT 3.8L twin-turbo V6</li>
+                        <li>Tracción: 4 ruedas</li>
+                        <li>Actualizaciones constantes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
